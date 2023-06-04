@@ -1,3 +1,4 @@
+package Lab2.Code;
 
 public class Cart {
 	private static final int MAX_NUMBERS_ORDERED = 20;
