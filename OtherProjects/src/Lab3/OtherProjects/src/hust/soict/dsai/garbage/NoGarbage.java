@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class GarbageCreatorNew {
+public class NoGarbage {
 	public static void main(String[] args) {
 		String filename = "test.exe";
 		byte[] inputBytes = { 0 };
