@@ -82,19 +82,11 @@ public class AddBookToStoreScreenController extends AddItemToStoreScreenControll
 				return;
 			}
 		}
-		try {
-			store.addMedia(book);
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Notification");
-			alert.setHeaderText("Success");
-			alert.setContentText(book.getTitle() + " has been added to the store");
-			alert.showAndWait();
-		} catch (DupplicatedItemException e) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Notification");
-			alert.setHeaderText("Failure");
-			alert.setContentText("Failed to add book. Please enter valid information.");
-			alert.showAndWait();
-		}
+		store.addMedia(book);
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Notification");
+		alert.setHeaderText("Success");
+		alert.setContentText(book.getTitle() + " has been added to the store");
+		alert.showAndWait();
 	}
 }

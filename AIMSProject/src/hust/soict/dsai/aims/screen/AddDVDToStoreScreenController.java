@@ -60,20 +60,12 @@ public class AddDVDToStoreScreenController extends AddItemToStoreScreenControlle
 	@Override
 	protected void addBtnPressed() {
 		dvd = new DigitalVideoDisc(this.title, this.category, this.director, this.length, this.cost);
-		try {
-			store.addMedia(dvd);
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Notification");
-			alert.setHeaderText("Success");
-			alert.setContentText(dvd.getTitle() + " has been added to the store");
-			alert.showAndWait();
-		} catch (DupplicatedItemException e) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Notification");
-			alert.setHeaderText("Failure");
-			alert.setContentText("Failed to add DVD. Please enter valid information.");
-			alert.showAndWait();
-		}
+		store.addMedia(dvd);
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Notification");
+		alert.setHeaderText("Success");
+		alert.setContentText(dvd.getTitle() + " has been added to the store");
+		alert.showAndWait();
 	}
 	
 }

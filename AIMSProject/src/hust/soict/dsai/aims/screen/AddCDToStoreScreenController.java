@@ -133,20 +133,12 @@ public class AddCDToStoreScreenController extends AddItemToStoreScreenController
 				tfTracks.setText("");
 			}
 		}
-		try {
-			store.addMedia(cd);
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Notification");
-			alert.setHeaderText("Success");
-			alert.setContentText(cd.getTitle() + " has been added to the store");
-			alert.showAndWait();
-		} catch (DupplicatedItemException e) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Notification");
-			alert.setHeaderText("Failure");
-			alert.setContentText("Failed to add CD. Please enter valid information.");
-			alert.showAndWait();
-		}
+		store.addMedia(cd);
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Notification");
+		alert.setHeaderText("Success");
+		alert.setContentText(cd.getTitle() + " has been added to the store");
+		alert.showAndWait();
 	}
 
 }
