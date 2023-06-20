@@ -1,6 +1,9 @@
 package hust.soict.dsai.aims.media;
 
 import java.util.ArrayList;
+
+import hust.soict.dsai.aims.exception.*;
+
 import java.util.List;
 
 public class Book extends Media {
@@ -35,22 +38,50 @@ public class Book extends Media {
 		this.authors = authors;
 	}
 
-	public void addAuthor(String authorName) {
-		if (!authors.contains(authorName)) {
-			authors.add(authorName);
-			System.out.println("Author: " + authorName + "be added to the book");
-		}else {
-			System.out.println("Author: " + authorName + "is already associated to the book");
+	public void addAuthor(String authorName) throws DupplicatedItemException {
+		for (String name: this.authors) {
+			if (name.toLowerCase().equals(authorName.toLowerCase())) {
+				throw new DupplicatedItemException(name + " is already in the list of authors.");
+			}
 		}
+		this.authors.add(authorName);
+		System.out.println(authorName + " has been added to the " + this.getTitle() + " list of authors.");
 	}
 	
-	public void removeAuthor(String authorName) {
-		if (authors.contains(authorName)) {
-            authors.remove(authorName);
-            System.out.println("Author " + authorName + " removed from the book.");
-        } else {
-            System.out.println("Author " + authorName + " is not associated with the book.");
-        }
+	
+	public void removeAuthor(String authorName) throws NonExistingItemException {
+		for (String name: this.authors) {
+			if (name.toLowerCase().equals(authorName.toLowerCase())) {
+				this.authors.remove(name);
+				System.out.println(name + " has been removed from the " + this.getTitle() + " list of authors.");
+				return;
+			}
+		}
+		throw new NonExistingItemException(authorName + " is not in the list of authors.");
+	}
+	
+	public String getType() {
+		return "Book";
+	}
+	
+	public String getDetails() {
+		StringBuffer authorsList = new StringBuffer();
+		if (this.authors.size() >= 1) {
+			authorsList.append(this.authors.get(0));
+			for (int i = 1; i < this.authors.size(); i++) {
+				authorsList.append(", " + this.authors.get(i));
+			}
+		}
+		return ("Product ID: " + String.valueOf(this.getId())
+		+ "\n" + "\t" + "Title: " + this.getTitle()
+		+ "\n" + "\t" + "Category: " + this.getCategory()
+		+ "\n" + "\t" + "Authors: " + authorsList
+		+ "\n" + "\t" + "Content Length: " + String.valueOf(this.getContentLength()) + " pages"
+		+ "\n" + "\t" + "Price: $" + String.valueOf(this.getCost()));
+	}
+	
+	public int getContentLength() {
+		return contentLength;
 	}
 	
 	@Override

@@ -1,26 +1,30 @@
 package hust.soict.dsai.aims.media;
 import java.util.ArrayList;
+import hust.soict.dsai.aims.exception.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import java.util.Collections;
 
 public class Cart {
+	private static final int MAX_NUMBERS_ORDERED = 20;
+	private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 	
-	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
-
-    public boolean addMedia(Media media) {
-        itemsOrdered.add(media);
-        System.out.println("Added " + media.getTitle() + " to the cart.");
-        return true;
-    }
-
-    public boolean removeMedia(Media media) {
-        if (itemsOrdered.remove(media)) {
-            System.out.println("Removed " + media.getTitle() + " from the cart.");
-            return true;
-        } else {
-            System.out.println("Item not found in the cart.");
-            return false;
-        }
-    }
+	public void addMedia(Media medium) throws CartFullException {
+		if (this.itemsOrdered.size() == MAX_NUMBERS_ORDERED) {
+			throw new CartFullException("The cart is full.");
+		} else {
+			this.itemsOrdered.add(medium);
+			System.out.println(medium.getTitle() + " has beed added to the cart.");
+		}
+	}
+	
+	public void removeMedia(Media medium) throws NonExistingItemException {
+		if (this.itemsOrdered.remove(medium)) {
+			System.out.println(medium.getTitle() + " has been removed from the cart.");
+		} else {
+			throw new NonExistingItemException(medium.getTitle() + " is not in the cart.");
+		}
+	}
 
     public float totalCost() {
         float total = 0;
@@ -87,5 +91,13 @@ public class Cart {
 	
 	public void sortByCost() {
 		Collections.sort(this.itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+	}
+	
+	public ObservableList<Media> getItemsOrdered() {
+		return this.itemsOrdered;
+	}
+	
+	public void empty() {
+		this.itemsOrdered.clear();
 	}
 }

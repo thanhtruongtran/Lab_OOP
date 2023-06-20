@@ -87,9 +87,14 @@ public abstract class Media {
         return title.equals(media.title);
     }
 
+    public abstract String getType();
+    
+    public abstract String getDetails();
+    
     @Override
     public String toString() {
         return "ID: " + id + ", Title: " + title + ", Category: " + category + ", Cost: " + cost;
     }
+   
 
 }
