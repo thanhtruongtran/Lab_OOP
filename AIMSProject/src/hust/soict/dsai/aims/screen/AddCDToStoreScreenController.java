@@ -5,8 +5,11 @@ import java.util.Optional;
 
 import javax.swing.JFrame;
 
+import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.exception.*;
-import hust.soict.dsai.aims.media.*;
+import hust.soict.dsai.aims.media.CompactDisc;
+import hust.soict.dsai.aims.media.Track;
+import hust.soict.dsai.aims.store.Store;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -133,12 +136,20 @@ public class AddCDToStoreScreenController extends AddItemToStoreScreenController
 				tfTracks.setText("");
 			}
 		}
-		store.addMedia(cd);
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Notification");
-		alert.setHeaderText("Success");
-		alert.setContentText(cd.getTitle() + " has been added to the store");
-		alert.showAndWait();
+		try {
+			store.addMedia(cd);
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Notification");
+			alert.setHeaderText("Success");
+			alert.setContentText(cd.getTitle() + " has been added to the store");
+			alert.showAndWait();
+		} catch (DupplicatedItemException e) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Notification");
+			alert.setHeaderText("Failure");
+			alert.setContentText("Failed to add CD. Please enter valid information.");
+			alert.showAndWait();
+		}
 	}
 
 }

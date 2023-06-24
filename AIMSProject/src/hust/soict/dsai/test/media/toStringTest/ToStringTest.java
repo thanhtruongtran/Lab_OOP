@@ -1,9 +1,10 @@
 package hust.soict.dsai.test.media.toStringTest;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 import hust.soict.dsai.aims.media.*;
 
 public class ToStringTest {
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		List<Media> mediae = new ArrayList<Media>();

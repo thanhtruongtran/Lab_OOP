@@ -12,30 +12,11 @@ import javax.swing.JPanel;
 
 import hust.soict.dsai.aims.exception.*;
 
-
-public class Track implements Playable{
-
+public class Track implements Playable {
 	private String title;
-    private int length;
-
-    public Track(String title, int length) {
-        this.title = title;
-        this.length = length;
-    }
-
-    public Track(String title) {
-		this.title = title;
-	}
-
-	public String getTitle() {
-        return title;
-    }
-
-    public int getLength() {
-        return length;
-    }
-    
-    public boolean equals(Object track) {
+	private int length;
+	
+	public boolean equals(Object track) {
 		if (track instanceof Track) {
 			Track that = (Track) track;
 			if ((this.length == that.length) && (this.title.toLowerCase().equals(that.getTitle().toLowerCase()))) {
@@ -78,5 +59,22 @@ public class Track implements Playable{
 			d.setVisible(true);
 		}
 	}
-
+	
+	public Track(String title, int length) {
+		super();
+		this.title = title;
+		this.length = length;
+	}
+	public Track(String title) {
+		super();
+		this.title = title;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	public int getLength() {
+		return length;
+	}
+	
 }

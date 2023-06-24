@@ -2,8 +2,10 @@ package hust.soict.dsai.aims.screen;
 
 import javax.swing.JFrame;
 
+import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.exception.*;
 import hust.soict.dsai.aims.media.*;
+import hust.soict.dsai.aims.store.Store;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -117,7 +119,7 @@ public class CartScreenController {
 		} else {
 			if (filterByID) {
 				try {
-					filteredCart.setPredicate(s -> s.getId() == Integer.parseInt(filter));
+					filteredCart.setPredicate(s -> s.getID() == Integer.parseInt(filter));
 				} catch (NumberFormatException e) {}
 			} else {
 				filteredCart.setPredicate(s -> s.getTitle().toLowerCase().contains(filter));
