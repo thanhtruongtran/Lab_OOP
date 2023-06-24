@@ -1,10 +1,10 @@
 package hust.soict.dsai.test.store.StoreTest;
-
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
-import hust.soict.dsai.aims.media.Store;
+import hust.soict.dsai.aims.media.*;
+import hust.soict.dsai.aims.store.Store;
 
 public class StoreTest {
-	public static void main(String[] args) {
+
+	public static void main(String[] args) throws Exception {
 		//Create the store
 		Store myStore = new Store();
 
@@ -20,12 +20,12 @@ public class StoreTest {
 		myStore.addMedia(dvd3);
 		myStore.addMedia(dvd1);
 		myStore.addMedia(dvd1);
-		myStore.listItems();
+		myStore.print();
 
 		//Try removing DVDs
 //		myStore.removeMedia(dvd1, 2);
 		myStore.removeMedia(dvd3);
 		myStore.removeMedia(dvd1);
-		myStore.listItems();
+		myStore.print();
 	}
 }

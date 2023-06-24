@@ -12,49 +12,20 @@ import javax.swing.JPanel;
 
 import hust.soict.dsai.aims.exception.*;
 
-public class DigitalVideoDisc extends Disc implements Playable{
-	
-	public DigitalVideoDisc(String title) {
-		super(title);
-	}
-	public DigitalVideoDisc(String title, String category, float cost) {
-		super(title, category, cost);
-	}
-	public DigitalVideoDisc(String title, String category, String director, float cost) {
-		super(title, category, director, cost);
-	}
-	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-		super(title, category, director, length, cost);
-	}
 
-	public boolean isMatch(String title) {
-	    String[] keywords = title.toLowerCase().split(" ");
-	    String discTitle = this.getTitle().toLowerCase();
-	    for (String keyword : keywords) {
-	        if (!discTitle.contains(keyword)) {
-	            return false;
-	        }
-	    }
-	    return true;
-	}
-
+public class DigitalVideoDisc extends Disc {
 	
-	@Override
-    public String toString() {
-        return super.toString() + ", Director: " + getDirector() + ", Length: " + getLength();
-    }
+	public String getType() {
+		return "DVD";
+	}
 	
 	public String getDetails() {
-		return ("Product ID: " + String.valueOf(this.getId())
+		return ("Product ID: " + String.valueOf(this.getID())
 				+ "\n" + "\t" + "Title: " + this.getTitle()
 				+ "\n" + "\t" + "Category: " + this.getCategory()
 				+ "\n" + "\t" + "Director: " + this.getDirector()
 				+ "\n" + "\t" + "Length: " + String.valueOf(this.getLength()) + " minutes"
 				+ "\n" + "\t" + "Price: $" + String.valueOf(this.getCost()));
-	}
-	
-	public String getType() {
-		return "DVD";
 	}
 	
 	public void play() throws PlayerException {
@@ -86,6 +57,19 @@ public class DigitalVideoDisc extends Disc implements Playable{
 			d.setLocation(x, y);
 			d.setVisible(true);
 		}
+	}
+	
+	public DigitalVideoDisc(String title) {
+		super(title);
+	}
+	public DigitalVideoDisc(String title, String category, float cost) {
+		super(title, category, cost);
+	}
+	public DigitalVideoDisc(String title, String category, String director, float cost) {
+		super(title, category, director, cost);
+	}
+	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
+		super(title, category, director, length, cost);
 	}
 	
 }

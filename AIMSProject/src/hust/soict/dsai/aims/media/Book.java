@@ -1,43 +1,13 @@
 package hust.soict.dsai.aims.media;
-
 import java.util.ArrayList;
+import java.util.List;
 
 import hust.soict.dsai.aims.exception.*;
-
-import java.util.List;
 
 public class Book extends Media {
 	private int contentLength;
 	private List<String> authors = new ArrayList<String>();
 	
-	public Book(String title, String category, int contentLength, float cost) {
-		super(title, category, cost);
-		this.contentLength = contentLength;
-	}
-
-	public Book(String title, String category, float cost) {
-		super(title, category, cost);
-		// TODO Auto-generated constructor stub
-	}
-
-	public Book(String title, String category) {
-		super(title, category);
-		// TODO Auto-generated constructor stub
-	}
-
-	public Book(String title) {
-		super(title);
-		// TODO Auto-generated constructor stub
-	}
-	
-	public List<String> getAuthors() {
-		return authors;
-	}
-
-	public void setAuthors(List<String> authors) {
-		this.authors = authors;
-	}
-
 	public void addAuthor(String authorName) throws DupplicatedItemException {
 		for (String name: this.authors) {
 			if (name.toLowerCase().equals(authorName.toLowerCase())) {
@@ -72,7 +42,7 @@ public class Book extends Media {
 				authorsList.append(", " + this.authors.get(i));
 			}
 		}
-		return ("Product ID: " + String.valueOf(this.getId())
+		return ("Product ID: " + String.valueOf(this.getID())
 		+ "\n" + "\t" + "Title: " + this.getTitle()
 		+ "\n" + "\t" + "Category: " + this.getCategory()
 		+ "\n" + "\t" + "Authors: " + authorsList
@@ -80,13 +50,28 @@ public class Book extends Media {
 		+ "\n" + "\t" + "Price: $" + String.valueOf(this.getCost()));
 	}
 	
+	public Book(String title, String category, int contentLength, float cost) {
+		super(title, category, cost);
+		this.contentLength = contentLength;
+	}
+
+	public Book(String title, String category, float cost) {
+		super(title, category, cost);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Book(String title, String category) {
+		super(title, category);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Book(String title) {
+		super(title);
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getContentLength() {
 		return contentLength;
 	}
-	
-	@Override
-    public String toString() {
-		return super.toString() + ", Author: " + getAuthors();
-    }
-	
+
 }

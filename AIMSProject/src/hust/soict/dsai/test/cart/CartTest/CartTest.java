@@ -1,5 +1,5 @@
 package hust.soict.dsai.test.cart.CartTest;
-
+import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.*;
 
 public class CartTest {
@@ -47,7 +47,7 @@ public class CartTest {
 		cart.sortByTitle();
 		
 		//Test the print method
-		cart.printCart();
+		cart.print();
 		
 		//TODO: Test the search method here
 //		cart.addMedia(dvd2);

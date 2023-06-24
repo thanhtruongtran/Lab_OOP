@@ -1,8 +1,9 @@
 package hust.soict.dsai.aims.media;
 
-public abstract class Disc extends Media implements Playable{
-	private int length;
+public abstract class Disc extends Media implements Playable {
 	private String director;
+	private int length;
+	
 	public Disc(String title, String category, String director, float cost) {
 		super(title, category, cost);
 		this.director = director;
@@ -28,12 +29,12 @@ public abstract class Disc extends Media implements Playable{
 		// TODO Auto-generated constructor stub
 	}
 
-    public int getLength() {
-        return length;
-    }
+	public String getDirector() {
+		return director;
+	}
 
-    public String getDirector() {
-        return director;
-    }
+	public int getLength() {
+		return length;
+	}
 
 }

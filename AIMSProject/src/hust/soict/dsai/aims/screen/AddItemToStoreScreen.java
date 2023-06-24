@@ -6,7 +6,8 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
-import hust.soict.dsai.aims.media.*;
+import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.store.Store;
 
 public class AddItemToStoreScreen extends JFrame {
 	private Store store;
@@ -21,6 +22,7 @@ public class AddItemToStoreScreen extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				new StoreScreen(store, cart);
+				hide();
 			}
 		});
 	}
